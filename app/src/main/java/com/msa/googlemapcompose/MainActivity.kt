@@ -41,21 +41,30 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeMapDemo() {
-    val singapore =LatLng(32.00,53.00)
+    val iran =LatLng(32.00,53.00)
+    val tehran =LatLng(35.7219,51.3347)
     val cameraPostionState= rememberCameraPositionState{
-        position= CameraPosition.fromLatLngZoom(singapore,30f)
+        position= CameraPosition.fromLatLngZoom(iran,30f)
     }
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPostionState
     ){
         Marker(
-            state = rememberMarkerState(position = singapore),
+            state = rememberMarkerState(position = iran),
             draggable = true,
             title = "Iran",
             snippet = "Marker in iran",
             icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
         )
+
+//        Marker(
+//            state = rememberMarkerState(position = tehran),
+//            draggable = true,
+//            title = "Iran",
+//            snippet = "Marker in iran",
+//            icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+//        )
     }
 }
 
