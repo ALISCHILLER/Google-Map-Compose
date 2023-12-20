@@ -23,30 +23,29 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import com.msa.googlemapcompose.ui.theme.GoogleMapComposeTheme
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            GoogleMapComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    // ComposeMapDemo()
-                   // ComposeMypPropertiesDemo()
-                    ComposeMapCustomizingMarker()
-                }
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    GoogleMapComposeTheme {
-        ComposeMapDemo()
-        // ComposeMapCustomizingMarker()
+fun ComposeMapDemo() {
+    val iran =LatLng(32.00,53.00)
+    val tehran =LatLng(35.7219,51.3347)
+    val cameraPostionState= rememberCameraPositionState{
+        position= CameraPosition.fromLatLngZoom(iran,5f)
+    }
+    GoogleMap(
+        modifier = Modifier.fillMaxSize(),
+    ){
+        Marker(
+            state = rememberMarkerState(position = iran),
+            draggable = true,
+            title = "Iran",
+            snippet = "Marker in iran",
+            icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+        )
+
+        MapMarker(
+            context = LocalContext.current,
+            positon = tehran,
+            title = "Tehran",
+            iconResource = R.drawable.baseline_share_location_24
+        )
     }
 }
