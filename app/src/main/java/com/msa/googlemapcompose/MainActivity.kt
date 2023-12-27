@@ -35,7 +35,11 @@ class MainActivity : ComponentActivity() {
                 ) {
                     // ComposeMapDemo()
                    // ComposeMypPropertiesDemo()
-                    ComposeMapCustomizingMarker()
+                  //  ComposeMapCustomizingMarker()
+                //    ComposeMapCenterPointMapMarker()
+                  //  ComposeMapMapPolyline()
+
+                    ComposeMapDrawTrack()
                 }
             }
         }
